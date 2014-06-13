@@ -71,7 +71,6 @@ describe Addressbook do
     let(:name) { 'Doge' }
     let(:address) { 'Wow Street, 412, Tel Aviv' }
 
-
     before do
       subject.put(name, address)
       subject.put('Dogemon', 'Such Street, 912, London')
@@ -83,6 +82,19 @@ describe Addressbook do
 
     it 'returns array of results' do
       expect(subject.near('Tel Aviv')).to eql([name])
+    end
+  end
+
+  context '#burn' do
+    let(:name) { 'Doge' }
+    let(:address) { 'Wow Street, 412, Tel Aviv' }
+
+    before do
+      subject.put(name, address)
+    end
+
+    it 'clears the book' do
+      expect { subject.burn }.to change(subject, :list).to([])
     end
   end
 end

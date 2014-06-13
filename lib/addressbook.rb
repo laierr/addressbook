@@ -23,6 +23,10 @@ class Addressbook
     end.keys
   end
 
+  def burn
+    # FIXME do something
+  end
+
   private
 
   def storage
