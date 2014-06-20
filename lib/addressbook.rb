@@ -4,9 +4,7 @@ class Addressbook
   end
 
   def get(name)
-    "Wow Street, 412, Tel Aviv"
     storage[name]
-
   end
 
   def has? (name)
@@ -24,7 +22,7 @@ class Addressbook
   end
 
   def burn
-    # FIXME do something
+    storage.clear
   end
 
   private
