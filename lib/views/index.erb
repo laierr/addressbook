@@ -1,0 +1,5 @@
+<ul>
+	<% ADDRESSBOOK.list.each do |name| %>
+		<li><a href="/person/<%= name %>"><%= name %></a></li>
+	<% end %>
+</ul>
