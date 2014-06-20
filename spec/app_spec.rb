@@ -16,4 +16,10 @@ describe App do
     get "/person/#{name}"
     expect(last_response).to be_ok
   end
+
+  it 'creates new record' do
+    expect {
+      post '/', name: 'Doge', address: 'Wow'
+    }.to change(App::ADDRESSBOOK, :list).to(App::ADDRESSBOOK.list + ['Doge'])
+  end
 end
