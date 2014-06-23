@@ -26,20 +26,25 @@ describe App do
   end
 
   describe 'form' do
-    it "adds item to the book" do
+    let(:name) { "Olonyasha" }
+    let(:address) { "Ohnoes Street" }
+
+    before(:each) do
       visit '/'
 
-      name = "Olonyasha"
-      address = "Ohnoes Street"
-
       within("form") do
-        fill_in 'name', :with => name
-        fill_in 'address', :with => address
+        fill_in 'name', with: name
+        fill_in 'address', with: address
       end
     
       click_button 'Submit'
-      expect(page).to have_content name
+    end
 
+    it "adds item to the book" do
+      expect(page).to have_content name
+    end
+    
+    it "can visit created page" do
       all('a').last.click
       expect(page).to have_content address
     end
